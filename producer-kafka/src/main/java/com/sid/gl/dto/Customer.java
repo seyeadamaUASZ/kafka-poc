@@ -49,8 +49,14 @@ public class Customer {
             "}";
     }
 
+    public Customer(int id, String name, String email, String contactNo) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.contactNo = contactNo;
+    }
 
-    
-
-    
+    public Customer(){
+        super();
+    }
 }

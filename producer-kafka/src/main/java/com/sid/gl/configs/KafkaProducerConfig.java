@@ -14,15 +14,15 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 
-@Configuration
+//@Configuration
 public class KafkaProducerConfig {
 
-    @Bean
+    /*@Bean
     public NewTopic createTopic(){
        return new NewTopic("kafka-topic", 5 ,(short) 1);
     }
-
-    @Bean
+*/
+    /*@Bean
     public Map<String,Object> producerConfig(){
        Map<String,Object> props = new HashMap<>();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
@@ -42,6 +42,6 @@ public class KafkaProducerConfig {
     public KafkaTemplate<String,Object> kafkaTemplate(){
         return new KafkaTemplate<>(producerFactory());
     }
-
+*/
     
 }
