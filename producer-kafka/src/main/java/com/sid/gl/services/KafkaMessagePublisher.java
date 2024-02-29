@@ -7,6 +7,8 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Service;
 
+import com.sid.gl.dto.Customer;
+
 @Service
 public class KafkaMessagePublisher {
 
@@ -26,5 +28,24 @@ public class KafkaMessagePublisher {
     });
 
     }
+
+
+    public void sendEventTopics(Customer customer){
+        try{
+            CompletableFuture<SendResult<String,Object>> future=  kafkaTemplate.send("kafka-topic",customer);
+            future.whenComplete((result,ex)->{
+            if(ex==null){
+                System.out.println("Sent message=[ "+customer.toString()+ "] with offset= ["+result.getRecordMetadata().offset() +"]");
+            }else{
+                System.out.println(" Unable send message=["+customer.toString()+" ] due to:  "+ex.getMessage());
+            }
+        
+      });
+        }catch(Exception e){
+          System.out.println("Error "+ e.getMessage());
+        }
+        
+  
+      }
     
 }
